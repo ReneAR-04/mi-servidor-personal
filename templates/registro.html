@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>Crear Cuenta</h2>
+        <form action="/registrar" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <button type="submit">Enviar Registro</button>
+        </form>
+    </div>
+
+    <div class="backend-lista">
+        <h3>Usuarios en el Backend:</h3>
+        {% if usuarios %}
+            <ul>
+                {% for usuario in usuarios %}
+                    <li><strong>{{ usuario.nombre }}</strong> ({{ usuario.email }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay registros todavía.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
